@@ -74,10 +74,30 @@ Once the `StackStatus` value has changed to `CREATE_COMPLETE`, the description s
 
 ### Create the Elastic Beanstalk application and environment
 
-The Elastic Beanstalk environment can be managed entirely via the command line. To initialize our project as an EB project, use the following:
+An Elastic Beanstalk app consists of an Application that can contain any number of Environments. The Environment defines the actual infrastructre that will run the application.
+
+The Elastic Beanstalk app can be managed entirely via the command line. The EB CLI has many functions, but this tutorial will focus on getting an application up and running as quickly as possible. 
+
+#### Create the application
+
+To initialize our project as an EB application, use the following:
 
 ```
 eb init
+```
+
+The command will ask several questions, including default region, application name, whether the project will use CodeCommit and if SSH should be set up for the project instances. If SSH support is selected, a key pair (.pem file) will either need to be selected or created.
+
+The CLI might ask for an AWS access key and secret. These can be created in the AWS IAM console.
+
+Once the `init` is complete, the application is created and can be viewed in the AWS Elastic Beanstalk console. These settings can be reviewed in `.elasticbeanstalk/config.yml`.
+
+#### Create the environment
+
+The following are suggested defaults for a simple web server running Node. The command will require several of the outputs from the earlier VPC creation step.
+
+```
+eb create [environment_name] -i t1.micro -p node.js-14
 ```
 
 <!-- "Outputs": [
