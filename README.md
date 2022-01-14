@@ -74,6 +74,14 @@ aws cloudformation describe-stacks --stack-name your-app-vpc-name
 
 Once the `StackStatus` value has changed to `CREATE_COMPLETE`, the description should also include an "Outputs" property. The values here will be used in the next step, so copying and pasting them into a scratch pad is a good idea.
 
+One other piece of information will be required when creating an environment later: The ID of the default security group that is created by AWS when the VPC is created. This can be queried using the following command:
+
+```
+aws ec2 describe-security-groups --filters Name=vpc-id,Values=[your-new-vpc-id]
+```
+
+Stash this value somewhere.
+
 ### Create the Elastic Beanstalk application and environment
 
 An Elastic Beanstalk app consists of an Application that can contain any number of Environments. The Environment defines the actual infrastructre that will run the application.
@@ -99,7 +107,7 @@ Once the `init` is complete, the application is created and can be viewed in the
 The following are suggested defaults for a simple web server running Node. The command will require several of the outputs from the earlier VPC creation step.
 
 ```
-eb create [environment_name] -i t1.micro -p node.js-14
+eb create [environment_name] -i t1.micro -p node.js-14 --elb-type application -im 1 -ix 1 --vpc.id vpc-0bda0d66e858cd855
 ```
 
 <!-- "Outputs": [

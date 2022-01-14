@@ -8,7 +8,7 @@
     "dev": "concurrently --kill-others-on-fail \"nodemon server.js\" \"npm run client\"",
     "dev:server": "cd client && npm run build && cd .. & npm start",
     "start": "node server.js",
-    "prestart": "cd client && npm run build"
+    "prestart": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.19.1",
@@ -21,5 +21,6 @@
     "@babel/node": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "concurrently": "^6.5.0"
-  }
+  },
+  "engines": { "node" : ">=12" }
 }
