@@ -22,5 +22,5 @@
     "@babel/preset-env": "^7.16.5",
     "concurrently": "^6.5.0"
   },
-  "engines": { "node" : ">=12" }
+  "engines": { "node" : ">=14" }
 }
