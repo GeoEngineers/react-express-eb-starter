@@ -107,8 +107,21 @@ Once the `init` is complete, the application is created and can be viewed in the
 The following are suggested defaults for a simple web server running Node. The command will require several of the outputs from the earlier VPC creation step.
 
 ```
-eb create [environment_name] -i t1.micro -p node.js-14 --elb-type application -im 1 -ix 1 --vpc.id vpc-0bda0d66e858cd855
+eb create test-dev -i t1.micro -p node.js-14 --elb-type application -im 1 -ix 1 --vpc.id vpc-0bda0d66e858cd855 --vpc.ec2subnets subnet-0b0402f6de52fce81,subnet-0ca2ea82a195604e3 --vpc.elbsubnets subnet-0e04dc57d6c377c8c,subnet-0087207d34ff5a424 --vpc.securitygroup sg-08d615a01b5e82ca1 --vpc.elbpublic --envvars NODE_ENV=production
 ```
+
+Fetch both the EB url and the ELB url.
+
+### Add custom URL, SSL to load balancer for HTTPS
+
+// create custom url in Route53
+// create SSL cert
+// create HTTPS listener on load balancer
+// forward HTTP listener to HTTPS
+
+### Add a database
+
+### Add Office365 authentication
 
 <!-- "Outputs": [
                 {
