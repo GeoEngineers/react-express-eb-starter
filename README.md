@@ -1,6 +1,6 @@
 # :construction: WORK IN PROGRESS :construction:
 
-# Express-React App with Elastic Beanstalk Template
+# Express Server with React front end and easy Elastic Beanstalk deployment
 
 Please fork this repo to get started.
 
