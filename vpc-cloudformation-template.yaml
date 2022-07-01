@@ -164,24 +164,24 @@ Outputs:
     Description: VPC ID
     Value: !Ref "PubPrivateVPC"
     Export:
-      Name: BeanstalkVPCID
+      Name: !Join [_, [!Ref 'AWS::StackName',VPCID]]
   PrivateSubnet1ID:
     Description: Private Subnet A ID
     Value: !Ref "PrivateSubnet1"
     Export:
-      Name: BeanstalkPrivateSubnet1ID
+      Name: !Join [_, [!Ref 'AWS::StackName',PrivateSubnet1ID]]
   PrivateSubnet2ID:
     Description: Private Subnet B ID
     Value: !Ref "PrivateSubnet2"
     Export:
-      Name: BeanstalkPrivateSubnet2ID
+      Name: !Join [_, [!Ref 'AWS::StackName',PrivateSubnet2ID]]
   PublicSubnet1ID:
     Description: Public Subnet A ID
     Value: !Ref "PublicSubnet1"
     Export:
-      Name: BeanstalkPublicSubnet1ID
+      Name: !Join [_, [!Ref 'AWS::StackName',PublicSubnet1ID]]
   PublicSubnet2ID:
     Description: Public Subnet B ID
     Value: !Ref "PublicSubnet2"
     Export:
-      Name: BeanstalkPublicSubnet2ID
+      Name: !Join [_, [!Ref 'AWS::StackName',PublicSubne21ID]]
