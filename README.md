@@ -60,7 +60,7 @@ aws s3 cp vpc-cloudformation-template.yaml s3://cloudformation-templates-[your-a
 
 The template should now be available at https://s3.amazonaws.com/cloudformation-templates-[your-app-name]/vpc-cloudformation-template.yaml. 
 
-Now the VPC can be created by referencing the template. The template also includes a parameter for the base CIDR block, `paramVPCCidrBlockBase`, which should be passed with the `create-stack` command. The CIDR block limits the number of IP addresses that are available in the VPC, which makes it easier prevent overlapping CIDR blocks with other VPCs. This can be useful later if VPCs need to be paired.
+Now the VPC can be created by referencing the template. The template also includes a parameter for the base CIDR block, `paramVPCCidrBlockBase`, which should be passed with the `create-stack` command. The CIDR block limits the number of IP addresses that are available in the VPC, which makes it easier prevent overlapping CIDR blocks with other VPCs. This can be useful later if VPCs need to be paired.  Replace "your-app-vpc-name" with the VPC name you'd like for this cloudformation.
 
 ```
 aws cloudformation create-stack --stack-name "your-app-vpc-name" --template-url https://s3.amazonaws.com/cloudformation-templates-[your-app-name]/vpc-cloudformation-template.yaml --parameters ParameterKey=paramVPCCidrBlockBase,ParameterValue=[your cidr block base, e.g. 10.11.0.0/16]
