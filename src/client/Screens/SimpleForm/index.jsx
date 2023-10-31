@@ -31,7 +31,7 @@ function SimpleForm() {
             <div className="card-body">
                 <h2 className="card-title">Simple Form</h2>
                 <p className="card-text">
-                    This form collects data from the user and submits it to the <code>/api/form</code> endpoint
+                    This form collects data from the user and submits it to the <code>/api/form</code> endpoint. The server then sends a response, which is displayed below.
                 </p>
                 <form className="form-control" onSubmit={handleSubmit}>
                     <div className="form-group">
