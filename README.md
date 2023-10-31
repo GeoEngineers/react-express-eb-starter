@@ -6,7 +6,7 @@ Please fork this repo to get started.
 
 ## About
 
-This repo includes code and templates for creating an Express node app with a React client. It is designed to make setting up a local development environment as simple as possible.
+This repo includes code and templates for creating an Express Node app with a React client. It is designed to make setting up a local development environment as simple as possible.
 
 Included are instructions and infrastructure-as-code templates for setting up and deploying the app to Elastic Beanstalk on AWS in a secure VPC.
 
@@ -14,13 +14,7 @@ Included are instructions and infrastructure-as-code templates for setting up an
 
 ## Usage
 
-Install [nodemon](https://nodemon.io/) globally
-
-```
-npm install nodemon -g
-```
-
-Install server and client dependencies
+Install dependencies
 
 ```
 npm install
@@ -32,7 +26,7 @@ Start the server and the client with a single command:
 npm run dev
 ```
 
-Run the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:3001.
+Run the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:3000.
 
 ## Setting up an Elastic Beanstalk environment
 
