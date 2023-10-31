@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Lato:wght@300;400;700;900&display=swap');
+
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+
+// $body-color: rgb(102, 102, 102);
+// $primary: #005581;
+
+$geoprimary: rgb(0, 85, 129);
+$geosecondary: rgb(96, 124, 140);
+
+$theme-colors: (
+  primary: $geoprimary,
+  secondary: $geosecondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark
+);
+
+// $custom-colors: (
+  // geoprimary: $geoprimary,
+  // geosecondary: $geosecondary
+// );
+
+// $theme-colors: map-merge($theme-colors, $custom-colors);
+
+:export {
+  @each $key, $value in $theme-colors {
+    #{unquote($key)}: $value;
+  }
+}
+
+// $geoprimary-text-emphasis:   shade-color($geoprimary, 60%) !default;
+// $geoprimary-bg-subtle:       tint-color($geoprimary, 80%) !default;
+// $geoprimary-border-subtle:   tint-color($geoprimary, 60%) !default;
+
+// $geosecondary-text-emphasis:   shade-color($geosecondary, 60%) !default;
+// $geosecondary-bg-subtle:       tint-color($geosecondary, 80%) !default;
+// $geosecondary-border-subtle:   tint-color($geosecondary, 60%) !default;
+
+@import "../node_modules/bootstrap/scss/maps";
+
+// $theme-colors: map-merge($theme-colors, $custom-colors);
+// $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+// $utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+// $utilities-text: map-merge($utilities-text, $utilities-colors);
+// $utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text");
+// $utilities-bg: map-merge($utilities-bg, $utilities-colors);
+// $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
+
+// $custom-theme-colors-text: (
+//     "geoprimary": $geoprimary-text-emphasis,
+//     "geosecondary": $geosecondary-text-emphasis
+// );
+// $theme-colors-text: map-merge($theme-colors-text, $custom-theme-colors-text);
+
+// $custom-theme-colors-bg: (
+//   "geoprimary": $geoprimary,
+//   "geosecondary": $geosecondary
+// );
+// $theme-colors-bg: map-merge($theme-colors-bg, $custom-theme-colors-bg);
+
+// $custom-theme-colors-bg-subtle: (
+//     "geoprimary": $geoprimary-bg-subtle,
+//     "geosecondary": $geosecondary-bg-subtle
+// );
+// $theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-theme-colors-bg-subtle);
+
+// $custom-theme-colors-border-subtle: (
+//     "geoprimary": $geoprimary-border-subtle,
+//     "geosecondary": $geosecondary-border-subtle
+// );
+// $theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-theme-colors-border-subtle);
+
+
+// 5. Include remainder of required parts
+// @import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+// @import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/alert";
+// @import "../node_modules/bootstrap/scss/progress";
+@import "../node_modules/bootstrap/scss/list-group";
+@import "../node_modules/bootstrap/scss/close";
+@import "../node_modules/bootstrap/scss/modal";
+// @import "../node_modules/bootstrap/scss/carousel";
+@import "../node_modules/bootstrap/scss/spinners";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+
+// $theme-colors: (
+  // "primary": #005581,
+//   "secondary": #6c757d,
+//   "info": #70a7c8,
+//   "success": #799f3f,
+//   "warning": #7f5886,
+//   "danger": #c74f2e,
+//   "dark": rgb(51, 51, 51)
+// );
+
+.jumbotron-bg {
+  background-color: #e9ecef
+}
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: 'Domine', serif;
+  font-weight: 400;
+  // color: rgb(51, 51, 51);
+}
+
+// code {
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+//     monospace;
+// }
+ 
+// body {
+  // padding-top: 4.5rem;
+// }
+
+fieldset > div:last-child {
+  margin-bottom: 0 !important; 
+}
+
+.alert-pre {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.loaderSpan {
+  font-weight: 900;
+  // font-family: 'Domine', serif;
+  // color: theme-color-level(info, 6) 
+  color: $dark;
+}
+
+@include media-breakpoint-down(sm){
+  .firstButton {
+    margin-bottom: 15px;
+  }
+}
+
+.carousel-indicators > button {
+  color: transparent;
+}
