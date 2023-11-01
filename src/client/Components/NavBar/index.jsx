@@ -4,13 +4,22 @@ import geoLogo from "../../assets/geo_logo.svg";
 import { startCase } from "lodash";
 
 function NavBar(){
+
+    function toggleNav(e){
+        e.preventDefault();
+        e.stopPropagation();  // to prevent the click event from bubbling up to the document and closing the nav
+        const nav = document.getElementById("navbarNav");
+        nav.classList.toggle("show");
+        return false;  // to prevent the click event from bubbling up to the document and closing the nav
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     <img src={geoLogo} alt="Geo Engineers Logo" height="25px" />
                 </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button onClick={toggleNav} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
