@@ -5,11 +5,13 @@ import Home from "./Screens/Home";
 import RouterLoader from "./Screens/RouterLoader";
 import InlineLoader from './Screens/InlineLoader';
 import SimpleForm from './Screens/SimpleForm';
+import ErrorBoundary from './Components/ErrorBoundary';
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Layout/>,
+		errorElement: <ErrorBoundary/>,
 		children: [
 			{
 				path: "/",

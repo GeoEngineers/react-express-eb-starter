@@ -8,14 +8,13 @@ function NavBar(){
 
     // this is a hack to re-create the bootstrap nav collapse
     // probably better to use react-bootstrap or reactstrap for proper implementation
-    // but this is a plain react solution with regular html for now
+    // but this is a plain react solution with html for now
     const nav = useRef(null);
 
     function toggleNav(e){
         e.preventDefault();
         e.stopPropagation();  // to prevent the click event from bubbling up to the document and closing the nav
         nav.current.classList.toggle("show");
-        nav.current.classList.toggle("collapsing");
         return false;  // to prevent the click event from bubbling up to the document and closing the nav
     }
 
