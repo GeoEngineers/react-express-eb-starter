@@ -33,6 +33,9 @@ function SimpleForm() {
                 <p className="card-text">
                     This form collects data from the user and submits it to the <code>/api/form</code> endpoint. The server then sends a response, which is displayed below.
                 </p>
+                <p className="card-text">
+                    For more advanced form needs, check out <a href="https://react-hook-form.com">React-Hook-Form</a>.
+                </p>
                 <form className="form-control" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
