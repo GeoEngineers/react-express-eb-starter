@@ -171,6 +171,19 @@ The DNS record is now created, and once the record propogates, the new Route53 e
 ### Troubleshooting
 If you encounter "ERROR OCCURRED: error: no pg_hba.conf entry for host "10.10.0.116", user "ebroot", database "ebdb", no encryption"
 
+First, try updating the Knex connection setting, usually located in `knexfile.js`. Add the following line:
+
+```javascript
+  ...
+  connection: {
+    ...
+    ssl: { rejectUnauthorized: false },
+  },
+...
+```
+
+If that doesn't work, try modifying the RDS instance:
+
 Create a New Parameter Group:
 - Open the Amazon RDS console at https://console.aws.amazon.com/rds/.
 - In the navigation pane, choose "Parameter groups".
