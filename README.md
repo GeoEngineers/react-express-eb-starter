@@ -110,8 +110,6 @@ This will start the EB environment creation process and the CLI will ask a few m
 
 Once this step has completed, the app should be running in the cloud. To visit the app, use the command `eb open`.
 
-When deploying the database, you may encounter the error "error: no pg_hba.conf entry for host "10.27.0.82", user "postgres", database "ebdb", no encryption".  This is due to knex requiring "rejectUnauthorized:false" in it's options.  See the following link for implementation details: https://github.com/knex/knex/issues/4360
-
 ### Add custom URL
 
 While the endpoint provided by `eb open` works, most users want to create a custom URL for their apps. This can be done in a few simple steps.
