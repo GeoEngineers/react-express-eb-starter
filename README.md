@@ -171,6 +171,53 @@ The DNS record is now created, and once the record propogates, the new Route53 e
 
 ### Add Office365 authentication
 
+### Troubleshooting
+If you encounter "ERROR OCCURRED: error: no pg_hba.conf entry for host "10.10.0.116", user "ebroot", database "ebdb", no encryption"
+
+First, try updating the Knex connection setting, usually located in `knexfile.js`. Add the following line:
+
+```javascript
+  ...
+  connection: {
+    ...
+    ssl: { rejectUnauthorized: false },
+  },
+...
+```
+
+If that doesn't work, try modifying the RDS instance:
+
+Create a New Parameter Group:
+- Open the Amazon RDS console at https://console.aws.amazon.com/rds/.
+- In the navigation pane, choose "Parameter groups".
+- Click "Create parameter group" at the top right of the page.
+- In the "Parameter group family" dropdown, select "postgres15".
+- In the "Group name" field, enter a name for the new parameter group.
+- In the "Description" field, enter a description for the new parameter group.
+- Click "Create" at the bottom right of the page.
+
+Modify the rds.force_ssl Parameter of your new Parameter Group:
+- In the list of parameter groups, click on the name of the new parameter group you just created.
+- In the "Filter parameters" box, type rds.force_ssl and press Enter.
+- You should see the rds.force_ssl parameter. Click "Edit parameters".
+- Change the value of rds.force_ssl from 1 to 0, then click "Save changes".
+
+Associate Your RDS Instance with the New Parameter Group:
+- In the navigation pane, choose "Databases".
+- Click on the name of your RDS instance.
+- Click "Modify" at the top right of the page.
+- In the "Database options" section, find the "DB parameter group" setting and select the new parameter group you created from the dropdown menu.
+- Scroll down and click "Continue".
+- Review the summary of modifications and click "Modify DB Instance".
+
+Reboot Your RDS Instance:
+- In the navigation pane, choose "Databases".
+- Click on the name of your RDS instance.
+- Click "Actions" at the top right of the page, then "Reboot".
+- Confirm that you want to reboot the instance.
+By following these steps, you should be able to successfully modify the rds.force_ssl parameter in your Amazon RDS instance. And hopefully the connection issue would be resolved.
+https://stackoverflow.com/questions/76899023/rds-while-connection-error-no-pg-hba-conf-entry-for-host
+
 ## Prior art
 
 https://medium.com/@wlto/how-to-deploy-an-express-application-with-react-front-end-on-aws-elastic-beanstalk-880ff7245008
