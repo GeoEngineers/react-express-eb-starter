@@ -1,0 +1,55 @@
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Get package version
+        id: get_version
+        run: |
+          content=`cat package.json | jq '.version'`
+          # echo "::set-output name=VERSION::$content"
+          echo "VERSION=$content" >> $GITHUB_ENV
+          echo $VERSION
+
+      - name: Get current time
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYYMMDD-HH-MM
+          utcOffset: "-08:00"
+
+      - name: Configure AWS credentials
+        id: aws_creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.EB_DEPLOY_ROLE }}
+          role-session-name: $SHORTNAME-deploy
+          aws-region: us-west-2
+          output-credentials: true
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*' 'node_modules' 'dist' '.env'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{ steps.aws_creds.outputs.aws-access-key-id }}
+          aws_secret_key: ${{ steps.aws_creds.outputs.aws-secret-access-key }}
+          aws_session_token: ${{ steps.aws_creds.outputs.aws-session-token }}
+          application_name: $SHORTNAME
+          environment_name: $SHORTNAME-prod
+          version_label: $SHORTNAME-${{ fromJson(env.VERSION) }}-${{ steps.current-time.outputs.formattedTime }}
+          region: us-west-2
+          deployment_package: deploy.zip

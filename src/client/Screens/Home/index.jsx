@@ -12,6 +12,7 @@ function Home() {
                 <ul>
                     <li>Check in <code>src/client</code> for all code related to the front end.</li>
                     <li>Check in <code>src/server</code> for all code related to the back end.</li>
+                    <li>Check in <code>src/db</code> for all code related to the (optional) database.</li>
                     <li>Examples of common web page functions can be found in the menu bar links.</li>
                 </ul>
             </div>

@@ -1,5 +1,3 @@
-# :construction: WORK IN PROGRESS :construction:
-
 # Express Server with React front end and easy Elastic Beanstalk deployment
 
 Please fork this repo to get started.
@@ -20,13 +18,20 @@ Install dependencies
 npm install
 ```
 
-Start the server and the client with a single command:
+Start the server and the client in development mode with hot module reload with a single command:
 
 ```
 npm run dev
 ```
 
-Run the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:3000.
+To create bundled assets and serve, run the build command and then start the server:
+
+```
+npm run build
+npm start
+```
+
+# Deployment
 
 ## Setting up an Elastic Beanstalk environment
 
