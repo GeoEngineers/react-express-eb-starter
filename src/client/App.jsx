@@ -6,6 +6,7 @@ import RouterLoader from "./Screens/RouterLoader";
 import InlineLoader from './Screens/InlineLoader';
 import SimpleForm from './Screens/SimpleForm';
 import ErrorBoundary from './Components/ErrorBoundary';
+import OptionalDatabase from './Screens/OptionalDatabase';
 
 export const router = createBrowserRouter([
 	{
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
 			{
 				path: "simple-form",
 				element: <SimpleForm/>,
+			},
+			{
+				path: "optional-database",
+				element: <OptionalDatabase/>
 			}
 		]
 	}

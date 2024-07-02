@@ -18,7 +18,7 @@ Install dependencies
 npm install
 ```
 
-Start the server and the client with a single command:
+Start the server and the client in development mode with hot module reload with a single command:
 
 ```
 npm run dev
@@ -30,6 +30,8 @@ To create bundled assets and serve, run the build command and then start the ser
 npm run build
 npm start
 ```
+
+# Deployment
 
 ## Setting up an Elastic Beanstalk environment
 
